@@ -24,19 +24,36 @@ jobs:
           pip install rsconnect-python
           pip install -r requirements.txt
 
-      - name: Deploy to shinyapps.io
+      - name: Setup Env variables
         env:
           SHINY_TOKEN: ${{ secrets.SHINY_TOKEN }}
           SHINY_SECRET: ${{ secrets.SHINY_SECRET }}
           SHINY_ACCOUNT: ${{ secrets.SHINY_ACCOUNT }}
-          SHINY_APP_ID: ${{ secrets.SHINY_APP_ID }}
+          SHINY_APP_IDT: ${{ secrets.SHINY_APP_ID }}
+          SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME }}
+
+      - name: Deploy to shinyapps.io with known app name
         run: |
           rsconnect deploy shiny ./ \
           --account $SHINY_ACCOUNT \
           --server shinyapps.io \
           --token $SHINY_TOKEN \
           --secret $SHINY_SECRET \
-          --title basic-app \
+          --title $SHINY_APP_NAME \
+          --a $SHINY_APP_NAME \
+        if: env.SHINY_ACCOUNT != ''
+        
+      - name: Deploy to shinyapps.io with NEW app name
+        run: |
+          rsconnect deploy shiny ./ \
+          --account $SHINY_ACCOUNT \
+          --server shinyapps.io \
+          --token $SHINY_TOKEN \
+          --secret $SHINY_SECRET \
+          --title $SHINY_APP_NAME \
+        if: env.SHINY_ACCOUNT == ''
+        
+
 
 
 
