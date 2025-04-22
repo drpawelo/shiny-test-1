@@ -29,7 +29,7 @@ jobs:
           SHINY_TOKEN: ${{ secrets.SHINY_TOKEN }}
           SHINY_SECRET: ${{ secrets.SHINY_SECRET }}
           SHINY_ACCOUNT: ${{ secrets.SHINY_ACCOUNT }}
-          SHINY_APP_IDT: ${{ secrets.SHINY_APP_ID }}
+          SHINY_APP_ID: ${{ secrets.SHINY_APP_ID }}
           SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME || 'new-app'}}
         run: |
           echo "variable setup" 
@@ -42,8 +42,8 @@ jobs:
           --token $SHINY_TOKEN \
           --secret $SHINY_SECRET \
           --title $SHINY_APP_NAME \
-          --a $SHINY_APP_NAME \
-        if: env.SHINY_ACCOUNT != ''
+          --a $SHINY_APP_ID \
+        if: env.SHINY_APP_ID != ''
         
       - name: Deploy to shinyapps.io with NEW app name
         run: |
@@ -53,7 +53,7 @@ jobs:
           --token $SHINY_TOKEN \
           --secret $SHINY_SECRET \
           --title $SHINY_APP_NAME \
-        if: env.SHINY_ACCOUNT == ''
+        if: env.SHINY_APP_ID == ''
         
 
 
