@@ -30,7 +30,7 @@ jobs:
           SHINY_SECRET: ${{ secrets.SHINY_SECRET }}
           SHINY_ACCOUNT: ${{ secrets.SHINY_ACCOUNT }}
           SHINY_APP_ID: ${{ secrets.SHINY_APP_ID }}
-          SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME || 'new-app'}}
+          SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME}}
         run: |
           echo "variable setup" 
 
@@ -40,7 +40,7 @@ jobs:
           SHINY_SECRET: ${{ secrets.SHINY_SECRET }}
           SHINY_ACCOUNT: ${{ secrets.SHINY_ACCOUNT }}
           SHINY_APP_ID: ${{ secrets.SHINY_APP_ID }}
-          SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME || 'new-app'}}
+          SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME}}
         run: |
           rsconnect deploy shiny ./ \
           --account $SHINY_ACCOUNT \
@@ -57,7 +57,7 @@ jobs:
           SHINY_SECRET: ${{ secrets.SHINY_SECRET }}
           SHINY_ACCOUNT: ${{ secrets.SHINY_ACCOUNT }}
           SHINY_APP_ID: ${{ secrets.SHINY_APP_ID }}
-          SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME || 'new-app'}}
+          SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME}}
         run: |
           rsconnect deploy shiny ./ \
           --account $SHINY_ACCOUNT \
@@ -66,14 +66,3 @@ jobs:
           --secret $SHINY_SECRET \
           --title $SHINY_APP_NAME \
         if: env.SHINY_APP_ID == ''
-        
-
-
-
-
-          
-
-
-
-
-          
