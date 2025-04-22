@@ -48,7 +48,7 @@ jobs:
           --token $SHINY_TOKEN \
           --secret $SHINY_SECRET \
           --title $SHINY_APP_NAME \
-          --a $SHINY_APP_ID \
+          -a $SHINY_APP_ID \
         if: env.SHINY_APP_ID != ''
         
       - name: Deploy to shinyapps.io with NEW app name
