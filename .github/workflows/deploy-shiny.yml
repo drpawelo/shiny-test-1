@@ -31,6 +31,8 @@ jobs:
           SHINY_ACCOUNT: ${{ secrets.SHINY_ACCOUNT }}
           SHINY_APP_IDT: ${{ secrets.SHINY_APP_ID }}
           SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME }}
+        run: |
+          echo "variable setup" 
 
       - name: Deploy to shinyapps.io with known app name
         run: |
