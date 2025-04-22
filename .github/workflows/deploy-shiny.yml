@@ -47,7 +47,7 @@ jobs:
           --server shinyapps.io \
           --token $SHINY_TOKEN \
           --secret $SHINY_SECRET \
-          --title new-app \
+          --title $SHINY_APP_NAME \
           --a $SHINY_APP_ID \
         if: env.SHINY_APP_ID != ''
         
@@ -64,7 +64,7 @@ jobs:
           --server shinyapps.io \
           --token $SHINY_TOKEN \
           --secret $SHINY_SECRET \
-          --title new-app \
+          --title $SHINY_APP_NAME \
         if: env.SHINY_APP_ID == ''
         
 
