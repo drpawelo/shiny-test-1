@@ -29,6 +29,7 @@ jobs:
           SHINY_TOKEN: ${{ secrets.SHINY_TOKEN }}
           SHINY_SECRET: ${{ secrets.SHINY_SECRET }}
           SHINY_ACCOUNT: ${{ secrets.SHINY_ACCOUNT }}
+          SHINY_APP_ID: ${{ secrets.SHINY_APP_ID }}
         run: |
           rsconnect deploy shiny ./ \
           --account $SHINY_ACCOUNT \
