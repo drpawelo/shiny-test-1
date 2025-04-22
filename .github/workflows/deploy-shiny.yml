@@ -35,6 +35,12 @@ jobs:
           echo "variable setup" 
 
       - name: Deploy to shinyapps.io with known app name
+        env:
+          SHINY_TOKEN: ${{ secrets.SHINY_TOKEN }}
+          SHINY_SECRET: ${{ secrets.SHINY_SECRET }}
+          SHINY_ACCOUNT: ${{ secrets.SHINY_ACCOUNT }}
+          SHINY_APP_ID: ${{ secrets.SHINY_APP_ID }}
+          SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME || 'new-app'}}
         run: |
           rsconnect deploy shiny ./ \
           --account $SHINY_ACCOUNT \
@@ -46,6 +52,12 @@ jobs:
         if: env.SHINY_APP_ID != ''
         
       - name: Deploy to shinyapps.io with NEW app name
+        env:
+          SHINY_TOKEN: ${{ secrets.SHINY_TOKEN }}
+          SHINY_SECRET: ${{ secrets.SHINY_SECRET }}
+          SHINY_ACCOUNT: ${{ secrets.SHINY_ACCOUNT }}
+          SHINY_APP_ID: ${{ secrets.SHINY_APP_ID }}
+          SHINY_APP_NAME: ${{ secrets.SHINY_APP_NAME || 'new-app'}}
         run: |
           rsconnect deploy shiny ./ \
           --account $SHINY_ACCOUNT \
